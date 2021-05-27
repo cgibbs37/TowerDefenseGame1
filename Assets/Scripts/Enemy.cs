@@ -2,16 +2,19 @@
 
 public class Enemy : MonoBehaviour
 {
+    //sets the movement speed of the enemy
     public float speed = 10f;
 
     private Transform target;
     private int waypointIndex = 0;
 
+    //sets the starting spawnpoint of the enemy objects
     void Start ()
     {
         target = Waypoints.points[0];
     }
 
+    //Updates enemy waypoints to find correct pathing through the games end point.
     void Update ()
     {
         Vector3 dir = target.position - transform.position;
@@ -23,6 +26,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Gets the waypoint info, if the waypoint is equal to the endpoint, the enemy vanishes like a typical tower defense game.
     void GetNextWaypoint()
     {
         if (waypointIndex >= Waypoints.points.Length -1)
